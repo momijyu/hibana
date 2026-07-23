@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Password</title>
+  </head>
+  <body>
+    <h1>❓ なぞなぞ ❓</h1>
+      <p>花なのに、根もくきも葉っぱもない。<br>でも咲くと皆が空を見上げる花ってなーんだ？🌸</p>
+    {% if error %}
+      <p style="color: red;">パスワードが違います。</p>
+    {% endif %}
+
+    <form action="{{ url_for('menu') }}" method="post">
+      <label>
+        答え
+        <input type="password" name="password" required autofocus>
+      </label>
+      <button type="submit">決定</button>
+    </form>
+  </body>
+</html>
