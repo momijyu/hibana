@@ -75,10 +75,9 @@ python -m pip install -r requirements.txt
 
 ## localhostで起動
 
-仮想環境を有効にし、答えを環境変数へ設定してから実行します。
+仮想環境を有効にした状態で実行します。
 
 ```bash
-export APP_PASSWORD="任意の答え"
 python app.py
 ```
 
@@ -114,7 +113,7 @@ Flaskが答えを判定
 花火を表示   赤いエラーを表示
 ```
 
-答えはソースコードへ直接記載せず、起動時に環境変数 `APP_PASSWORD` で設定します。この入力画面は作品の演出を目的としたもので、本格的なユーザー認証機能ではありません。
+答えは `app.py` で `hanabi` に固定しています。この入力画面は作品の演出を目的としたもので、本格的なユーザー認証機能ではありません。
 
 ## 花火の調整
 
@@ -150,7 +149,6 @@ Raspberry Piへ接続したあと、プロジェクトへ移動して起動し�
 
 ```bash
 cd ~/hibana
-export APP_PASSWORD="任意の答え"
 python3 app.py
 ```
 

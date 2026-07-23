@@ -1,12 +1,8 @@
-from os import environ
-
 from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
-PASSWORD = environ.get("APP_PASSWORD")
-if not PASSWORD:
-    raise RuntimeError("APP_PASSWORD environment variable is required.")
+PASSWORD = "hanabi"
 
 
 @app.route("/")
