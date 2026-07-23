@@ -23,7 +23,7 @@ Flaskで画面の切り替えと答えの判定を行い、p5.jsで花火のア�
 ## ディレクトリ構成
 
 ```text
-jisshuu3/
+hibana/
 ├── app.py                  # Flaskアプリ本体・答えの判定
 ├── requirements.txt       # Pythonの依存パッケージ
 ├── .gitignore             # Gitで管理しないファイルの設定
@@ -33,7 +33,7 @@ jisshuu3/
 │   └── hanabi.html         # 花火を表示する画面
 └── static/
     ├── script.js           # 花火の生成・移動・爆発処理
-    ├── style.css           # 画面のスタイル
+    ├── style.css           # 画面のスタイル（現在は空）
     └── lib/
         └── p5.min.js       # p5.jsライブラリ
 ```
@@ -42,10 +42,11 @@ jisshuu3/
 
 ## セットアップ
 
-### 1. プロジェクトへ移動
+### 1. リポジトリを取得
 
 ```bash
-cd jisshuu3
+git clone https://github.com/momijyu/hibana.git
+cd hibana
 ```
 
 ### 2. 仮想環境を作成
@@ -74,9 +75,10 @@ python -m pip install -r requirements.txt
 
 ## localhostで起動
 
-仮想環境を有効にした状態で実行します。
+仮想環境を有効にし、答えを環境変数へ設定してから実行します。
 
 ```bash
+export APP_PASSWORD="任意の答え"
 python app.py
 ```
 
@@ -112,7 +114,7 @@ Flaskが答えを判定
 花火を表示   赤いエラーを表示
 ```
 
-答えの判定は `app.py` の `PASSWORD` で行っています。パスワードの値はREADMEには記載しません。公開するアプリでは、パスワードやAPIキーなどの秘密情報をソースコードへ直接書かず、環境変数などで管理してください。
+答えはソースコードへ直接記載せず、起動時に環境変数 `APP_PASSWORD` で設定します。この入力画面は作品の演出を目的としたもので、本格的なユーザー認証機能ではありません。
 
 ## 花火の調整
 
@@ -147,19 +149,20 @@ this.vel.mult(random(2, 20));
 Raspberry Piへ接続したあと、プロジェクトへ移動して起動します。
 
 ```bash
-cd ~/jisshuu3
+cd ~/hibana
+export APP_PASSWORD="任意の答え"
 python3 app.py
 ```
 
 同じネットワーク上の端末から、次の形式でアクセスできます。
 
 ```text
-http://Raspberry-PiのIPアドレス:5001/login/
+http://<RASPBERRY_PI_IP>:5001/login/
 ```
 
 
 ## 補足
 
 - 開発用サーバーは `0.0.0.0:5001` で待ち受けます。
-- `debug=True` は開発・実習用の設定です。
+- `debug=True` は開発・実習専用です。インターネットへ公開する環境では無効にしてください。
 - Mac用に作った `.venv` はRaspberry Piへコピーせず、必要な場合はRaspberry Pi側で作り直してください。
