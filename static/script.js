@@ -24,7 +24,6 @@ function draw() {
   for (let i = fireworks.length - 1; i >= 0; i--) {
     fireworks[i].update();
     fireworks[i].show();
-
     if (fireworks[i].done()) {
       fireworks.splice(i, 1);
     }
@@ -66,7 +65,7 @@ class Firework {
 
   explode() {
     // 爆発する火花の量
-    let numParticles = random(150, 350);
+    let numParticles = random(750, 1000);
 
     for (let i = 0; i < numParticles; i++) {
       let isLeft = i % 2 === 0;
